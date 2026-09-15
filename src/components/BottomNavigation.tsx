@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Home, Gem, Wallet, User } from "lucide-react";
+import { Home, Wallet, Receipt, User } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { spring } from "../lib/motion";
 
-export type NavKey = "home" | "schemes" | "wallet" | "profile";
+export type NavKey = "home" | "wallet" | "payments" | "profile";
 
 interface NavItem {
   key: NavKey;
@@ -13,8 +13,8 @@ interface NavItem {
 
 const items: NavItem[] = [
   { key: "home", label: "Home", icon: Home },
-  { key: "schemes", label: "Schemes", icon: Gem },
   { key: "wallet", label: "Wallet", icon: Wallet },
+  { key: "payments", label: "Payments", icon: Receipt },
   { key: "profile", label: "Profile", icon: User },
 ];
 
