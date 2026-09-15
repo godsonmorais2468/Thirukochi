@@ -46,7 +46,7 @@ export default function MpinKeypad({ onDigit, onBackspace, disabled = false }: M
   };
 
   return (
-    <div className="grid grid-cols-3 gap-3" role="group" aria-label="PIN keypad">
+    <div className="grid grid-cols-3 gap-[clamp(7px,1.4vh,14px)]" role="group" aria-label="PIN keypad">
       {keys.map((key) => {
         const isAction = key === "back" || key === "clear";
         return (
@@ -58,7 +58,7 @@ export default function MpinKeypad({ onDigit, onBackspace, disabled = false }: M
             whileTap={reduced || disabled ? undefined : { scale: 0.94 }}
             transition={spring.press}
             aria-label={key === "back" ? "Delete" : key === "clear" ? "Clear" : key}
-            className="relative isolate flex h-[62px] items-center justify-center overflow-hidden rounded-[18px] disabled:opacity-40"
+            className="relative isolate flex h-[clamp(44px,6.2vh,62px)] items-center justify-center overflow-hidden rounded-[18px] disabled:opacity-40"
             style={{
               border: "1px solid rgba(215,175,92,0.16)",
               background: isAction
@@ -88,7 +88,7 @@ export default function MpinKeypad({ onDigit, onBackspace, disabled = false }: M
 
             <span
               className={`relative z-10 ${
-                isAction ? "text-champagne-dim" : "font-display text-[25px] text-champagne"
+                isAction ? "text-champagne-dim" : "font-display text-[clamp(20px,5.4vw,25px)] text-champagne"
               }`}
             >
               {key === "back" ? (

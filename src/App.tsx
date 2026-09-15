@@ -44,7 +44,7 @@ export default function App() {
 
           {screen === "mpin" && <MpinScreen key="mpin" onComplete={() => setScreen("home")} />}
 
-          {screen === "home" && <HomeScreen key="home" name={account.name} phone={account.phone} />}
+          {screen === "home" && <HomeScreen key="home" name={account.name} phone={account.phone} onSignOut={reset} />}
         </AnimatePresence>
       </AppShell>
     </MotionConfig>

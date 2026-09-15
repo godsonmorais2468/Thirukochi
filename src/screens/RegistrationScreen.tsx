@@ -30,12 +30,12 @@ export default function RegistrationScreen({ onContinue }: RegistrationScreenPro
   };
 
   return (
-    <ScreenTransition className="overflow-y-auto px-8 pb-9 lg:px-16">
+    <ScreenTransition className="overflow-hidden px-7 pb-[clamp(14px,2.4vh,36px)] lg:overflow-y-auto lg:px-16">
       <motion.div
         variants={stagger}
         initial="initial"
         animate="animate"
-        className="mx-auto flex h-full w-full flex-col pt-[max(3.25rem,calc(env(safe-area-inset-top)+2.5rem))] lg:grid lg:max-w-[1240px] lg:grid-cols-[1.1fr_minmax(400px,460px)] lg:items-center lg:gap-24 lg:py-16 lg:pt-0"
+        className="mx-auto flex h-full w-full flex-col justify-center gap-[clamp(10px,2vh,22px)] pt-[max(1rem,env(safe-area-inset-top))] lg:justify-start lg:gap-0 lg:pt-0 lg:grid lg:max-w-[1240px] lg:grid-cols-[1.1fr_minmax(400px,460px)] lg:items-center lg:gap-24 lg:py-16 lg:pt-0"
       >
         {/* Editorial column */}
         <div className="flex flex-col lg:h-full lg:justify-center lg:pt-0">
@@ -52,24 +52,24 @@ export default function RegistrationScreen({ onContinue }: RegistrationScreenPro
               animate={{ opacity: [0.4, 1, 0.4], scale: [0.96, 1.05, 0.96] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
-            <BrandLogo variant="lockup" width={190} sizeClass="w-[190px] lg:w-[250px]" shared />
+            <BrandLogo variant="lockup" width={190} sizeClass="w-[clamp(124px,36vw,190px)] lg:w-[250px]" shared />
           </motion.div>
 
-          <motion.div variants={rise} className="mt-11 lg:mt-14">
+          <motion.div variants={rise} className="mt-[clamp(6px,1.6vh,44px)] lg:mt-14">
             <p className="text-[10px] tracking-luxe uppercase text-bronze">Est. Kochi</p>
-            <h1 className="mt-3 font-display text-[40px] leading-[1.05] text-champagne lg:text-[64px]">
+            <h1 className="mt-2 font-display text-[clamp(26px,7.4vw,40px)] leading-[1.05] text-champagne lg:text-[64px]">
               A private gold
               <br />
               <span className="text-metal-shimmer italic">portfolio</span>, opened.
             </h1>
-            <p className="mt-4 max-w-[30ch] text-[12.5px] leading-relaxed text-champagne-dim lg:mt-6 lg:max-w-[42ch] lg:text-[15px]">
+            <p className="mt-2.5 hidden max-w-[30ch] text-[12.5px] leading-relaxed text-champagne-dim min-[380px]:block lg:mt-6 lg:max-w-[42ch] lg:text-[15px]">
               Begin with your name and number. Everything after takes under a minute.
             </p>
           </motion.div>
         </div>
 
         {/* Form column */}
-        <motion.div variants={rise} className="mt-8 lg:mt-0">
+        <motion.div variants={rise} className="lg:mt-0">
           <LuxePanel>
           <p className="text-[10.5px] tracking-luxe uppercase text-gold-200/85">Open your account</p>
 
@@ -78,7 +78,7 @@ export default function RegistrationScreen({ onContinue }: RegistrationScreenPro
               event.preventDefault();
               submit();
             }}
-            className="mt-6 flex flex-col gap-4"
+            className="mt-[clamp(12px,2.2vh,24px)] flex flex-col gap-[clamp(10px,1.8vh,16px)]"
           >
             <TextField
               label="Full name"
@@ -106,7 +106,7 @@ export default function RegistrationScreen({ onContinue }: RegistrationScreenPro
             </button>
           </form>
 
-          <div className="pt-7">
+          <div className="pt-[clamp(14px,2.4vh,28px)]">
             <GoldButton
               onClick={submit}
               layoutId={layout.primaryAction}
@@ -115,7 +115,7 @@ export default function RegistrationScreen({ onContinue }: RegistrationScreenPro
               Continue
             </GoldButton>
 
-            <p className="mt-5 text-center text-[10px] leading-relaxed text-champagne-soft/70">
+            <p className="mt-[clamp(10px,1.8vh,20px)] text-center text-[10px] leading-relaxed text-champagne-soft/70">
               By continuing you accept our terms and privacy notice.
               <br />
               This is a demonstration — no data leaves your device.

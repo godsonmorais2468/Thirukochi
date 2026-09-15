@@ -53,7 +53,7 @@ export default function TextField({
         }}
         transition={{ duration: 0.45, ease: ease.luxe }}
         style={{
-          height: 58,
+          height: "clamp(48px, 6.6vh, 58px)",
           borderWidth: 1,
           borderStyle: "solid",
           background:
@@ -84,10 +84,16 @@ export default function TextField({
 
         {/* Label and value ride on separate tracks so they never collide. */}
         <div className="relative z-20 h-full flex-1">
+          {/* Percentages keep label and value aligned as the box height flexes */}
           <motion.span
             aria-hidden
             initial={false}
-            animate={{ top: lifted ? 9 : 20, scale: lifted ? 0.74 : 1, opacity: lifted ? 0.85 : 1 }}
+            animate={{
+              top: lifted ? "16%" : "50%",
+              y: lifted ? "0%" : "-50%",
+              scale: lifted ? 0.74 : 1,
+              opacity: lifted ? 0.85 : 1,
+            }}
             transition={spring.soft}
             className={`pointer-events-none absolute left-0 z-10 origin-left text-[12px] leading-none tracking-luxe-sm uppercase ${
               error ? "text-rose-300/85" : focused ? "text-gold-200" : "text-champagne-soft"
@@ -109,7 +115,7 @@ export default function TextField({
             aria-label={label}
             aria-invalid={Boolean(error)}
             aria-describedby={error || hint ? `${id}-msg` : undefined}
-            className="absolute inset-0 h-full w-full bg-transparent pt-[26px] pb-[9px] font-display text-[17px] leading-[22px] text-champagne caret-gold-300"
+            className="absolute inset-x-0 bottom-[10%] h-[46%] w-full bg-transparent p-0 font-display text-[clamp(15px,4vw,17px)] leading-none text-champagne caret-gold-300"
           />
         </div>
       </motion.label>

@@ -118,7 +118,7 @@ export default function LuxePanel({ children, className = "" }: LuxePanelProps) 
 
           {/* Inner hairline frame */}
           <div
-            className="relative rounded-[22px] px-6 py-7 lg:px-8 lg:py-9"
+            className="relative rounded-[22px] px-[clamp(16px,4.6vw,26px)] py-[clamp(16px,2.6vh,30px)] lg:px-8 lg:py-9"
             style={{
               border: "1px solid rgba(215,175,92,0.28)",
               boxShadow:

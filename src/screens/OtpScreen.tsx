@@ -59,12 +59,12 @@ export default function OtpScreen({ phone, onVerified, onBack }: OtpScreenProps)
   const ss = String(seconds % 60).padStart(2, "0");
 
   return (
-    <ScreenTransition className="overflow-y-auto px-8 pb-9 lg:px-16">
+    <ScreenTransition className="overflow-hidden px-7 pb-[clamp(14px,2.4vh,36px)] lg:overflow-y-auto lg:px-16">
       <motion.div
         variants={stagger}
         initial="initial"
         animate="animate"
-        className="mx-auto flex h-full w-full flex-col pt-[max(2.75rem,calc(env(safe-area-inset-top)+2rem))] lg:grid lg:max-w-[1240px] lg:grid-cols-[1.1fr_minmax(400px,460px)] lg:items-center lg:gap-24 lg:py-16 lg:pt-0"
+        className="mx-auto flex h-full w-full flex-col justify-center gap-[clamp(8px,1.6vh,18px)] pt-[max(0.75rem,env(safe-area-inset-top))] lg:justify-start lg:gap-0 lg:pt-0 lg:grid lg:max-w-[1240px] lg:grid-cols-[1.1fr_minmax(400px,460px)] lg:items-center lg:gap-24 lg:py-16 lg:pt-0"
       >
         <div className="flex flex-col lg:h-full lg:justify-center">
           <motion.button
@@ -77,13 +77,13 @@ export default function OtpScreen({ phone, onVerified, onBack }: OtpScreenProps)
             <ArrowLeft size={15} strokeWidth={1.5} />
           </motion.button>
 
-          <motion.div variants={rise} className="mt-7 flex justify-center lg:mt-12 lg:justify-start">
-            <BrandLogo variant="lockup" width={150} sizeClass="w-[150px] lg:w-[230px]" shared />
+          <motion.div variants={rise} className="mt-[clamp(8px,2vh,28px)] flex justify-center lg:mt-12 lg:justify-start">
+            <BrandLogo variant="lockup" width={150} sizeClass="w-[clamp(112px,30vw,150px)] lg:w-[230px]" shared />
           </motion.div>
 
-          <motion.div variants={rise} className="mt-12 lg:mt-14">
+          <motion.div variants={rise} className="mt-[clamp(10px,2.4vh,48px)] lg:mt-14">
             <p className="text-[10px] tracking-luxe uppercase text-bronze">Verification</p>
-            <h1 className="mt-3 font-display text-[32px] leading-tight text-champagne lg:text-[52px]">
+            <h1 className="mt-2 font-display text-[clamp(23px,6.4vw,32px)] leading-tight text-champagne lg:text-[52px]">
               Enter your <span className="text-metal-shimmer italic">six digits</span>
             </h1>
             <p className="mt-3 text-[12.5px] text-champagne-dim lg:text-[15px]">
@@ -92,7 +92,7 @@ export default function OtpScreen({ phone, onVerified, onBack }: OtpScreenProps)
           </motion.div>
         </div>
 
-        <motion.div variants={rise} className="mt-10 lg:mt-0">
+        <motion.div variants={rise} className="mt-[clamp(10px,2vh,40px)] lg:mt-0">
           <LuxePanel>
         <div>
           <OtpInput
@@ -107,7 +107,7 @@ export default function OtpScreen({ phone, onVerified, onBack }: OtpScreenProps)
             disabled={status === "verified"}
           />
 
-          <div className="mt-5 min-h-[20px]">
+          <div className="mt-3 min-h-[18px]">
             <AnimatePresence mode="wait">
               {status === "error" && (
                 <motion.p
@@ -162,7 +162,7 @@ export default function OtpScreen({ phone, onVerified, onBack }: OtpScreenProps)
           </button>
         </div>
 
-          <div className="mt-auto pt-8 lg:mt-0 lg:pt-10">
+          <div className="pt-[clamp(14px,2.4vh,28px)] lg:pt-10">
             <GoldButton
               layoutId={layout.primaryAction}
               onClick={() => verify(code)}

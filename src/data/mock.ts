@@ -20,7 +20,7 @@ export const goldRate = {
 };
 
 export const referral = {
-  code: "TKGD123",
+  code: "KOCHI24",
   headline: "Invite friends to Thirukochi",
   body: "Share your code with friends and family when they join Thirukochi. Referral benefits are as per store policy.",
   invited: 6,
@@ -97,10 +97,39 @@ export const notifications = [
   { title: "Referral bonus", body: "₹1,500 added for Arun Nair", time: "Yesterday" },
 ];
 
-export const menuLinks = [
-  "My schemes",
-  "Rate alerts",
-  "Boutique appointments",
-  "Certificates & invoices",
-  "Support",
-];
+export const joinScheme = {
+  tenures: {
+    Kanakadhara: "11 + 1 months",
+    "Swarna Nidhi": "18 months",
+    "Diamond Circle": "24 months",
+  } as Record<string, string>,
+  presets: [2500, 5000, 10000, 25000],
+};
+
+export const profile = {
+  memberSince: "March 2026",
+  kyc: "Verified",
+  sections: [
+    {
+      title: "Account",
+      items: [
+        { key: "details", label: "Personal details", hint: "Name, address, KYC" },
+        { key: "invoices", label: "Certificates & invoices", hint: "Download purchase records" },
+      ],
+    },
+    {
+      title: "Security",
+      items: [
+        { key: "mpin", label: "Change MPIN", hint: "Update your 4-digit vault PIN" },
+        { key: "alerts", label: "Login alerts", hint: "Notify me on new sign-ins" },
+      ],
+    },
+    {
+      title: "Support",
+      items: [
+        { key: "help", label: "Help centre", hint: "Scheme and payment questions" },
+        { key: "boutique", label: "Contact boutique", hint: "Marine Drive, Kochi" },
+      ],
+    },
+  ],
+};

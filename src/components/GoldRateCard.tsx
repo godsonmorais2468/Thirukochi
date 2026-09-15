@@ -40,11 +40,11 @@ export default function GoldRateCard() {
   const falling = active.change < 0;
 
   return (
-    <GlassCard className="px-6 py-6" beamDelay={0}>
+    <GlassCard className="px-5 py-5" beamDelay={0}>
       {/* Radial dial motif, slowly turning */}
       <motion.svg
         aria-hidden
-        className="pointer-events-none absolute -right-10 -top-12 h-52 w-52 opacity-[0.18]"
+        className="pointer-events-none absolute -right-8 -top-10 h-40 w-40 opacity-[0.16]"
         viewBox="0 0 200 200"
         animate={reduced ? undefined : { rotate: 360 }}
         transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
@@ -67,7 +67,7 @@ export default function GoldRateCard() {
       </motion.svg>
 
       <div className="flex items-center gap-3">
-        <h2 className="font-display text-[21px] leading-none text-champagne">Today&apos;s Gold Rate</h2>
+        <h2 className="font-display text-[19px] leading-none text-champagne">Today&apos;s Gold Rate</h2>
         <span className="flex items-center gap-1.5 rounded-full border border-[rgba(249,223,50,0.32)] px-2.5 py-1 text-[9.5px] tracking-luxe-sm uppercase text-gold-200">
           <motion.span
             aria-hidden
@@ -80,10 +80,10 @@ export default function GoldRateCard() {
         <span className="ml-auto text-[11px] text-champagne-dim">{goldRate.quotedOn}</span>
       </div>
 
-      <p className="mt-5 text-[10px] tracking-luxe uppercase text-bronze">
+      <p className="mt-4 text-[10px] tracking-luxe uppercase text-bronze">
         {active.unit} · {active.karat}
       </p>
-      <p className="mt-1.5 font-display text-[38px] leading-none text-metal-gold">
+      <p className="mt-1.5 font-display text-[clamp(28px,7vw,34px)] leading-none text-metal-gold">
         {formatRupeesExact(price)}
       </p>
 
@@ -95,9 +95,14 @@ export default function GoldRateCard() {
         <span className="text-[11px] text-champagne-dim">vs last update</span>
       </div>
 
-      <p className="mt-6 text-[10px] tracking-luxe uppercase text-bronze">Recent movement</p>
+      <p className="mt-5 text-[10px] tracking-luxe uppercase text-bronze">Recent movement</p>
       <div className="relative mt-3 w-full">
-        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="w-full" fill="none" preserveAspectRatio="none">
+        <svg
+          viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+          className="h-[72px] w-full lg:h-[64px]"
+          fill="none"
+          preserveAspectRatio="none"
+        >
           <defs>
             <linearGradient id="spark-line" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#91640F" />
@@ -144,7 +149,7 @@ export default function GoldRateCard() {
         />
       </div>
 
-      <div className="mt-6 flex gap-2" role="group" aria-label="Gold weight and purity">
+      <div className="mt-5 flex gap-2" role="group" aria-label="Gold weight and purity">
         {goldRate.options.map((option) => {
           const isActive = option.id === selected;
           return (
@@ -173,7 +178,7 @@ export default function GoldRateCard() {
         })}
       </div>
 
-      <p className="mt-4 text-[10.5px] text-champagne-dim/80">{goldRate.footnote}</p>
+      <p className="mt-3.5 text-[10.5px] text-champagne-dim/80">{goldRate.footnote}</p>
     </GlassCard>
   );
 }

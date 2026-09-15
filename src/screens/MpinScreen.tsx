@@ -90,24 +90,24 @@ export default function MpinScreen({ onComplete }: MpinScreenProps) {
   }[step];
 
   return (
-    <ScreenTransition className="overflow-y-auto px-8 pb-8 lg:px-16">
+    <ScreenTransition className="overflow-hidden px-7 pb-[clamp(12px,2.2vh,32px)] lg:overflow-y-auto lg:px-16">
       <motion.div
         variants={stagger}
         initial="initial"
         animate="animate"
-        className="mx-auto flex h-full w-full flex-col pt-[max(3rem,calc(env(safe-area-inset-top)+2.25rem))] lg:grid lg:max-w-[1180px] lg:grid-cols-[1.1fr_minmax(360px,400px)] lg:items-center lg:gap-24 lg:py-16 lg:pt-0"
+        className="mx-auto flex h-full w-full flex-col justify-center gap-[clamp(8px,1.6vh,18px)] pt-[max(0.75rem,env(safe-area-inset-top))] lg:justify-start lg:gap-0 lg:pt-0 lg:grid lg:max-w-[1180px] lg:grid-cols-[1.1fr_minmax(360px,400px)] lg:items-center lg:gap-24 lg:py-16 lg:pt-0"
       >
         <motion.div
           variants={rise}
           className="flex justify-center lg:h-full lg:flex-col lg:justify-center"
         >
-          <BrandLogo variant="lockup" width={140} sizeClass="w-[140px] lg:w-[230px]" shared />
+          <BrandLogo variant="lockup" width={140} sizeClass="w-[clamp(104px,28vw,140px)] lg:w-[230px]" shared />
           <p className="mt-10 hidden max-w-[34ch] font-display text-[40px] leading-tight text-champagne lg:block">
             Your vault, sealed with <span className="text-metal-shimmer italic">four digits</span>.
           </p>
         </motion.div>
 
-        <LuxePanel className="mt-8 flex flex-1 flex-col justify-center lg:mt-0 lg:flex-none">
+        <LuxePanel className="flex flex-col justify-center lg:mt-0 lg:flex-none">
         <div className="flex flex-col items-center">
           <AnimatePresence mode="wait">
             <motion.div
@@ -119,8 +119,8 @@ export default function MpinScreen({ onComplete }: MpinScreenProps) {
               className="flex flex-col items-center text-center"
             >
               <p className="text-[10px] tracking-luxe uppercase text-bronze">{copy.eyebrow}</p>
-              <h1 className="mt-3 font-display text-[30px] leading-tight text-champagne">{copy.title}</h1>
-              <p className="mt-2.5 max-w-[30ch] text-[12px] text-champagne-dim">{copy.body}</p>
+              <h1 className="mt-2 font-display text-[clamp(22px,6vw,30px)] leading-tight text-champagne">{copy.title}</h1>
+              <p className="mt-2 max-w-[30ch] text-[clamp(11px,3vw,12px)] text-champagne-dim">{copy.body}</p>
             </motion.div>
           </AnimatePresence>
 
@@ -129,7 +129,7 @@ export default function MpinScreen({ onComplete }: MpinScreenProps) {
             variants={rise}
             animate={error && !reduced ? { x: [0, -9, 9, -6, 6, 0] } : { x: 0 }}
             transition={error ? { duration: 0.45 } : spring.soft}
-            className="glass mt-9 flex items-center gap-5 rounded-[22px] px-7 py-5"
+            className="glass mt-[clamp(12px,2.6vh,36px)] flex items-center gap-5 rounded-[22px] px-7 py-[clamp(12px,1.8vh,20px)]"
           >
             <span aria-hidden className={step === "done" ? "text-gold-300" : "text-bronze"}>
               {step === "done" ? <ShieldCheck size={16} strokeWidth={1.5} /> : <Lock size={15} strokeWidth={1.5} />}
@@ -159,7 +159,7 @@ export default function MpinScreen({ onComplete }: MpinScreenProps) {
             </div>
           </motion.div>
 
-          <div className="mt-4 min-h-[18px]">
+          <div className="mt-2.5 min-h-[16px]">
             <AnimatePresence mode="wait">
               {error && (
                 <motion.p
@@ -187,7 +187,7 @@ export default function MpinScreen({ onComplete }: MpinScreenProps) {
             </AnimatePresence>
           </div>
 
-          <motion.div variants={rise} className="w-full pt-12">
+          <motion.div variants={rise} className="w-full pt-[clamp(12px,2.6vh,48px)]">
             <MpinKeypad onDigit={handleDigit} onBackspace={handleBackspace} disabled={step === "done"} />
           </motion.div>
         </div>

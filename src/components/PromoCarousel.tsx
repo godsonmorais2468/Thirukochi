@@ -11,7 +11,13 @@ const ROTATE_MS = 6000;
 function NecklaceMotif() {
   const reduced = useReducedMotion();
   return (
-    <svg aria-hidden className="absolute -right-6 top-0 h-full w-[52%]" viewBox="0 0 200 220" fill="none">
+    <svg
+      aria-hidden
+      className="absolute right-0 top-1/2 h-[78%] max-h-[230px] w-[38%] -translate-y-1/2 lg:w-[42%]"
+      viewBox="0 0 200 220"
+      fill="none"
+      preserveAspectRatio="xMidYMid meet"
+    >
       <defs>
         <linearGradient id="promo-gold" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#91640F" />
@@ -61,10 +67,9 @@ export default function PromoCarousel() {
   }, [reduced]);
 
   return (
-    <motion.div variants={rise} className="relative">
+    <motion.div variants={rise} className="relative h-full">
       <div
-        className="glass relative isolate overflow-hidden rounded-[var(--radius-card)] px-6 py-7"
-        style={{ minHeight: 224 }}
+        className="glass relative isolate flex h-full min-h-[224px] flex-col overflow-hidden rounded-[var(--radius-card)] px-6 py-7"
       >
         <NecklaceMotif />
 
@@ -75,7 +80,7 @@ export default function PromoCarousel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.45, ease: ease.luxe }}
-            className="relative z-10 max-w-[62%]"
+            className="relative z-10 flex max-w-[56%] flex-1 flex-col justify-center"
           >
             <p className="text-[10px] tracking-luxe uppercase text-bronze">{promo.eyebrow}</p>
             <h3 className="mt-2.5 font-display text-[26px] leading-[1.12] text-champagne">{promo.title}</h3>
@@ -94,7 +99,7 @@ export default function PromoCarousel() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative z-10 mt-6 flex items-center gap-2">
+        <div className="relative z-10 mt-6 flex shrink-0 items-center gap-2">
           {promos.map((item, i) => (
             <button
               key={item.id}

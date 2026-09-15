@@ -1,14 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { LogOut } from "lucide-react";
 import { useState } from "react";
-import { ArrowRight, Menu } from "lucide-react";
 import BrandLogo from "../components/BrandLogo";
 import BottomNavigation from "../components/BottomNavigation";
 import type { NavKey } from "../components/BottomNavigation";
-import FloatingAction from "../components/FloatingAction";
 import PremiumBottomSheet from "../components/PremiumBottomSheet";
 import ScreenTransition from "../components/ScreenTransition";
 import TopBar from "../components/TopBar";
 import HomeTab from "./tabs/HomeTab";
+import JoinSchemeTab from "./tabs/JoinSchemeTab";
 import WalletTab from "./tabs/WalletTab";
 import PaymentsTab from "./tabs/PaymentsTab";
 import ProfileTab from "./tabs/ProfileTab";
@@ -16,16 +16,17 @@ import { useIsDesktop } from "../hooks/useMediaQuery";
 import { useToast } from "../hooks/useToasts";
 import { formatRupees } from "../lib/format";
 import { ease } from "../lib/motion";
-import { menuLinks, notifications, schemes } from "../data/mock";
+import { notifications, schemes } from "../data/mock";
 
-type Sheet = "none" | "schemes" | "notifications" | "menu";
+type Sheet = "none" | "schemes" | "notifications";
 
 interface HomeScreenProps {
   name: string;
   phone: string;
+  onSignOut: () => void;
 }
 
-export default function HomeScreen({ name, phone }: HomeScreenProps) {
+export default function HomeScreen({ name, phone, onSignOut }: HomeScreenProps) {
   const [sheet, setSheet] = useState<Sheet>("none");
   const [tab, setTab] = useState<NavKey>("home");
   const toast = useToast();
@@ -55,11 +56,11 @@ export default function HomeScreen({ name, phone }: HomeScreenProps) {
 
         <button
           type="button"
-          onClick={() => setSheet("menu")}
-          className="mt-auto flex items-center gap-3 rounded-2xl px-4 py-3 text-left text-[11px] tracking-luxe-sm uppercase text-champagne-dim transition-colors hover:text-gold-200"
+          onClick={onSignOut}
+          className="mt-auto flex items-center gap-3 rounded-2xl border border-[rgba(215,175,92,0.18)] px-4 py-3 text-left text-[11px] tracking-luxe-sm uppercase text-champagne-dim transition-colors hover:text-gold-200"
         >
-          <Menu size={16} strokeWidth={1.4} />
-          Account
+          <LogOut size={15} strokeWidth={1.5} />
+          Sign out
         </button>
       </aside>
 
@@ -71,7 +72,7 @@ export default function HomeScreen({ name, phone }: HomeScreenProps) {
           onProfile={() => setTab("profile")}
         />
 
-        <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto px-6 pb-32 lg:px-12 lg:pb-12">
+        <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto px-6 pb-36 lg:px-12 lg:pb-12">
           <div className="mx-auto max-w-[1080px] pt-2 lg:pt-4">
             <AnimatePresence mode="wait">
               <motion.div
@@ -82,18 +83,14 @@ export default function HomeScreen({ name, phone }: HomeScreenProps) {
                 transition={{ duration: 0.36, ease: ease.luxe }}
               >
                 {tab === "home" && <HomeTab name={name} onOpenSchemes={() => setSheet("schemes")} />}
+                {tab === "join" && <JoinSchemeTab onJoined={() => setTab("payments")} />}
                 {tab === "wallet" && <WalletTab />}
                 {tab === "payments" && <PaymentsTab />}
-                {tab === "profile" && <ProfileTab name={name} phone={phone} />}
+                {tab === "profile" && <ProfileTab name={name} phone={phone} onSignOut={onSignOut} />}
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
-
-        <FloatingAction
-          label="Add an instalment"
-          onClick={() => toast({ title: "Quick add", detail: "Mock action — nothing is charged" })}
-        />
 
         <BottomNavigation active={tab} className="lg:hidden" onChange={setTab} />
       </div>
@@ -151,30 +148,6 @@ export default function HomeScreen({ name, phone }: HomeScreenProps) {
         </ul>
       </PremiumBottomSheet>
 
-      <PremiumBottomSheet
-        open={sheet === "menu"}
-        onClose={() => setSheet("none")}
-        eyebrow="Your account"
-        title={name.trim() || "Guest"}
-      >
-        <ul className="flex flex-col">
-          {menuLinks.map((link) => (
-            <li key={link}>
-              <button
-                type="button"
-                onClick={() => {
-                  setSheet("none");
-                  toast({ title: link, detail: "Placeholder destination" });
-                }}
-                className="flex w-full items-center justify-between border-b border-[rgba(215,175,92,0.12)] py-4 text-left text-[13px] text-champagne-soft transition-colors hover:text-gold-200"
-              >
-                {link}
-                <ArrowRight size={13} strokeWidth={1.5} className="text-champagne-dim" />
-              </button>
-            </li>
-          ))}
-        </ul>
-      </PremiumBottomSheet>
     </ScreenTransition>
   );
 }

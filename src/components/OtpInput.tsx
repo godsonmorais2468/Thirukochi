@@ -59,7 +59,7 @@ export default function OtpInput({ length, status, onChange, onComplete, disable
 
   return (
     <div
-      className="flex justify-between gap-2"
+      className="flex justify-between gap-[clamp(5px,1.6vw,8px)]"
       role="group"
       aria-label={`${length} digit verification code`}
     >
@@ -142,7 +142,7 @@ export default function OtpInput({ length, status, onChange, onComplete, disable
                 autoComplete="one-time-code"
                 maxLength={1}
                 aria-label={`Digit ${index + 1}`}
-                className="relative z-20 h-[58px] w-full bg-transparent text-center font-display text-[22px] text-champagne caret-gold-300"
+                className="relative z-20 h-[clamp(46px,6.6vh,58px)] w-full bg-transparent text-center font-display text-[clamp(18px,5vw,22px)] text-champagne caret-gold-300"
               />
             </motion.div>
 
