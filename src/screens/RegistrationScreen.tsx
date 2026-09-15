@@ -60,7 +60,7 @@ export default function RegistrationScreen({ onContinue }: RegistrationScreenPro
             <h1 className="mt-2 font-display text-[clamp(26px,7.4vw,40px)] leading-[1.05] text-champagne lg:text-[64px]">
               A private gold
               <br />
-              <span className="text-metal-shimmer italic">portfolio</span>, opened.
+              <span className="text-metal-shimmer">portfolio</span>, opened.
             </h1>
             <p className="mt-2.5 hidden max-w-[30ch] text-[12.5px] leading-relaxed text-champagne-dim min-[380px]:block lg:mt-6 lg:max-w-[42ch] lg:text-[15px]">
               Begin with your name and number. Everything after takes under a minute.

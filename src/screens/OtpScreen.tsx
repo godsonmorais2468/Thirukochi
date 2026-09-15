@@ -84,7 +84,7 @@ export default function OtpScreen({ phone, onVerified, onBack }: OtpScreenProps)
           <motion.div variants={rise} className="mt-[clamp(10px,2.4vh,48px)] lg:mt-14">
             <p className="text-[10px] tracking-luxe uppercase text-bronze">Verification</p>
             <h1 className="mt-2 font-display text-[clamp(23px,6.4vw,32px)] leading-tight text-champagne lg:text-[52px]">
-              Enter your <span className="text-metal-shimmer italic">six digits</span>
+              Enter your <span className="text-metal-shimmer">six digits</span>
             </h1>
             <p className="mt-3 text-[12.5px] text-champagne-dim lg:text-[15px]">
               Sent to <span className="text-champagne-soft">{maskPhone(phone)}</span>

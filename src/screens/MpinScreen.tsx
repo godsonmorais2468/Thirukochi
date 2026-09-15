@@ -103,7 +103,7 @@ export default function MpinScreen({ onComplete }: MpinScreenProps) {
         >
           <BrandLogo variant="lockup" width={140} sizeClass="w-[clamp(104px,28vw,140px)] lg:w-[230px]" shared />
           <p className="mt-10 hidden max-w-[34ch] font-display text-[40px] leading-tight text-champagne lg:block">
-            Your vault, sealed with <span className="text-metal-shimmer italic">four digits</span>.
+            Your vault, sealed with <span className="text-metal-shimmer">four digits</span>.
           </p>
         </motion.div>
 

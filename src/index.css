@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Cormorant Garamond", "Times New Roman", serif;
-  --font-sans: "Jost", system-ui, sans-serif;
+  /* A bold, upright serif for headlines and prices — reads as premium at
+     weight 600/700 without the thin italic strokes that hurt legibility.
+     Body copy stays on Inter, chosen purely for how clean it is at small sizes. */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --color-wine-950: #120000;
   --color-wine-900: #1a0000;
@@ -20,11 +23,13 @@
   --color-gold-200: #f7e79a;
   --color-gold-100: #fbf1c9;
 
-  --color-bronze: #9a7b4f;
-  --color-champagne: #f0e3ca;
-  --color-champagne-soft: #cdbb97;
-  --color-champagne-dim: #9c8a6d;
-  --color-ivory: #fbf6ec;
+  /* Pushed close to white — body copy and hints read clearly against the
+     dark ribboned background instead of sinking into it. */
+  --color-bronze: #d3ba91;
+  --color-champagne: #faf5e9;
+  --color-champagne-soft: #f4ecd9;
+  --color-champagne-dim: #eee4cf;
+  --color-ivory: #fefdf9;
 
   --radius-card: 1.75rem;
 }
@@ -43,7 +48,7 @@
     background-color: var(--color-wine-950);
     color: var(--color-champagne);
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.012em;
     -webkit-font-smoothing: antialiased;
     overscroll-behavior: none;
@@ -100,6 +105,7 @@
 
 @utility font-display {
   font-family: var(--font-display);
+  font-weight: 600;
 }
 
 /* Metallic gold, used for fills */
